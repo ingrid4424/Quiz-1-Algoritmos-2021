@@ -48,22 +48,53 @@ public class Logica {
 			listTriangulos.get(i).mover();
 		}
 		if(this.app.frameCount > 120) {
-			crearTriangulo();
+			//crearTriangulo();
 		}
 			
 		
 	}
 	
+	public void moverFigura() {
+		for(int i = 0; i< listCirculos.size(); i++) {
+			if(this.app.mouseX> listCirculos.get(i).getPosX() &&
+					this.app.mouseX< listCirculos.get(i).getPosX() + listCirculos.get(i).getTam() &&
+					this.app.mouseY> listCirculos.get(i).getPosY() &&
+					this.app.mouseY< listCirculos.get(i).getPosY() + listCirculos.get(i).getTam()) {
+				listCirculos.get(i).setMover(!listCirculos.get(i).isMover());
+			}
+		}
+		
+		for(int i = 0; i< listCuadrados.size(); i++) {
+			if(this.app.mouseX> listCuadrados.get(i).getPosX() &&
+					this.app.mouseX< listCuadrados.get(i).getPosX() + listCuadrados.get(i).getTam() &&
+					this.app.mouseY> listCuadrados.get(i).getPosY() &&
+					this.app.mouseY< listCuadrados.get(i).getPosY() + listCuadrados.get(i).getTam()) {
+				listCuadrados.get(i).setMover(!listCuadrados.get(i).isMover());
+			}
+		}
+		
+		for(int i = 0; i< listTriangulos.size(); i++) {
+			if(this.app.mouseX> listTriangulos.get(i).getPosX() &&
+					this.app.mouseX< listTriangulos.get(i).getPosX() + listTriangulos.get(i).getTam() &&
+					this.app.mouseY> listTriangulos.get(i).getPosY() &&
+					this.app.mouseY< listTriangulos.get(i).getPosY() + listTriangulos.get(i).getTam()) {
+				listTriangulos.get(i).setMover(!listTriangulos.get(i).isMover());
+			}
+		}
+	}
+	
 	public void crearTriangulo() {
 		for(int i=0; i<listCirculos.size(); i++) {
 			for(int j=0; i<listCuadrados.size(); j++) {
-				if(listCirculos.get(i).getPosX()>listCuadrados.get(j).getPosX() && listCirculos.get(i).getPosX()<listCuadrados.get(j).getPosX()+listCuadrados.get(j).getTam() &&
-						listCirculos.get(i).getPosY()>listCuadrados.get(j).getPosY() && listCirculos.get(i).getPosY()<listCuadrados.get(j).getPosY()+listCuadrados.get(j).getTam()	) {
+				if(listCirculos.get(i).getPosX()> listCuadrados.get(j).getPosX()
+						&& listCirculos.get(i).getPosX()< (listCuadrados.get(j).getPosX()+listCuadrados.get(j).getTam()) &&
+						listCirculos.get(i).getPosY()> listCuadrados.get(j).getPosY() && 
+						listCirculos.get(i).getPosY()< (listCuadrados.get(j).getPosY()+listCuadrados.get(j).getTam())	) {
 					
-					int valor = listCirculos.get(i).getValor() +  listCirculos.get(j).getValor();
-					listTriangulos.add(new Triangulo(this.app, (int) this.app.random(30,100),(int) this.app.random(100,500) , (int) this.app.random(100,500), (int) this.app.random(10), valor));
-					listCirculos.remove(i);
-					listCuadrados.remove(j);
+					//int valor = listCirculos.get(i).getValor() +  listCirculos.get(j).getValor();
+					//listTriangulos.add(new Triangulo(this.app, (int) this.app.random(30,100),(int) this.app.random(100,500) , (int) this.app.random(100,500), (int) this.app.random(10), valor));
+					//listCirculos.remove(i);
+					//listCuadrados.remove(j);
 					
 					
 				}

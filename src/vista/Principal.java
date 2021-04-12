@@ -29,6 +29,7 @@ public class Principal extends PApplet {
 		if(mouseButton == RIGHT) {
 			control.getLogic().nuevaFigura();
 		}
+		control.getLogic().moverFigura();
 	}
 
 }

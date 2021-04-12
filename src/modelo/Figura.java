@@ -9,6 +9,7 @@ public abstract class Figura {
 	private int posY;
 	private int dir;
 	private int valor;
+	private boolean mover;
 
 	/*Cuadrado 50 400 30 -1 5
 	Circulo 30 300 40 1 8
@@ -24,18 +25,32 @@ public abstract class Figura {
 		this.posY = posY;
 		this.dir = dir;
 		this.valor = valor;
+		this.mover = true;
 		
 	}
 	
+	public boolean isMover() {
+		return mover;
+	}
+
+	public void setMover(boolean mover) {
+		this.mover = mover;
+	}
+
 	public abstract void pintar();
 	
 	public void mover() {
-		this.posX += this.dir;
-		this.posY += this.dir;
+		if(mover) {
+			this.posX += this.dir;
+			this.posY += this.dir;
+			
+			if(this.posX < 0|| this.posX>800 || this.posY <0 || this.posY>800) {
+				this.dir*= -1;
+			}
+		} else {
 		
-		if(this.posX < 0|| this.posX>800 || this.posY <0 || this.posY>800) {
-			this.dir*= -1;
 		}
+		
 	}
 
 	public PApplet getApp() {
