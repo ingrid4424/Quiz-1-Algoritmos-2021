@@ -31,7 +31,11 @@ public abstract class Figura {
 	
 	public void mover() {
 		this.posX += this.dir;
-		this.posY += 1;
+		this.posY += this.dir;
+		
+		if(this.posX < 0|| this.posX>800 || this.posY <0 || this.posY>800) {
+			this.dir*= -1;
+		}
 	}
 
 	public PApplet getApp() {

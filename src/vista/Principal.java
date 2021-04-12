@@ -24,5 +24,11 @@ public class Principal extends PApplet {
 		background(255);
 		control.getLogic().pintar();
 	}
+	
+	public void mousePressed() {
+		if(mouseButton == RIGHT) {
+			control.getLogic().nuevaFigura();
+		}
+	}
 
 }
