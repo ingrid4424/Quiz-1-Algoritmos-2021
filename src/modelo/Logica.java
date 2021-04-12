@@ -9,6 +9,7 @@ public class Logica {
 	private String[] txtBase;
 	private ArrayList<Cuadrado> listCuadrados;
 	private ArrayList<Circulo> listCirculos;
+	private ArrayList<Triangulo> listTriangulos;
 	
 	public Logica(PApplet app) {
 		this.app = app;
@@ -16,6 +17,7 @@ public class Logica {
 		
 		listCirculos = new ArrayList<>();
 		listCuadrados = new ArrayList<>();
+		listTriangulos = new ArrayList<Triangulo>();
 		
 		for(int i=0; i< txtBase.length;i++) {
 			String [] items = txtBase[i].split(" ");
@@ -40,7 +42,33 @@ public class Logica {
 			listCuadrados.get(i).pintar();
 			listCuadrados.get(i).mover();
 		}
+		
+		for(int i = 0; i< listTriangulos.size(); i++) {
+			listTriangulos.get(i).pintar();
+			listTriangulos.get(i).mover();
+		}
+		if(this.app.frameCount > 120) {
+			crearTriangulo();
+		}
+			
+		
+	}
 	
+	public void crearTriangulo() {
+		for(int i=0; i<listCirculos.size(); i++) {
+			for(int j=0; i<listCuadrados.size(); j++) {
+				if(listCirculos.get(i).getPosX()>listCuadrados.get(j).getPosX() && listCirculos.get(i).getPosX()<listCuadrados.get(j).getPosX()+listCuadrados.get(j).getTam() &&
+						listCirculos.get(i).getPosY()>listCuadrados.get(j).getPosY() && listCirculos.get(i).getPosY()<listCuadrados.get(j).getPosY()+listCuadrados.get(j).getTam()	) {
+					
+					int valor = listCirculos.get(i).getValor() +  listCirculos.get(j).getValor();
+					listTriangulos.add(new Triangulo(this.app, (int) this.app.random(30,100),(int) this.app.random(100,500) , (int) this.app.random(100,500), (int) this.app.random(10), valor));
+					listCirculos.remove(i);
+					listCuadrados.remove(j);
+					
+					
+				}
+			}
+		}
 	}
 	
 	public void nuevaFigura() {
